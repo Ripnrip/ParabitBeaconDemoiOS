@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C31411B1F83C0DA00C3B0ED /* AvailableDoorsViewController+BlueTooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C31411A1F83C0DA00C3B0ED /* AvailableDoorsViewController+BlueTooth.swift */; };
 		8CDA62821F82D4C2000C024B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA62811F82D4C2000C024B /* AppDelegate.swift */; };
 		8CDA62871F82D4C2000C024B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA62851F82D4C2000C024B /* Main.storyboard */; };
 		8CDA62891F82D4C2000C024B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA62881F82D4C2000C024B /* Assets.xcassets */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C31411A1F83C0DA00C3B0ED /* AvailableDoorsViewController+BlueTooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AvailableDoorsViewController+BlueTooth.swift"; sourceTree = "<group>"; };
+		8C31411C1F83C8CA00C3B0ED /* ParabitBeaconDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ParabitBeaconDemo.entitlements; sourceTree = "<group>"; };
 		8CDA627E1F82D4C2000C024B /* ParabitBeaconDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParabitBeaconDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDA62811F82D4C2000C024B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CDA62861F82D4C2000C024B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		8CDA62801F82D4C2000C024B /* ParabitBeaconDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8C31411C1F83C8CA00C3B0ED /* ParabitBeaconDemo.entitlements */,
 				8CDA62B01F82D592000C024B /* Models */,
 				8CDA62AF1F82D58A000C024B /* Views */,
 				8CDA62811F82D4C2000C024B /* AppDelegate.swift */,
@@ -162,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				8CDA62BA1F82D8E9000C024B /* AvailableDoorsViewController.swift */,
+				8C31411A1F83C0DA00C3B0ED /* AvailableDoorsViewController+BlueTooth.swift */,
 				8CDA62BC1F82DBF4000C024B /* AvailableDoorsViewController+TableView.swift */,
 			);
 			path = AvailableDoors;
@@ -264,6 +269,11 @@
 					8CDA627D1F82D4C2000C024B = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+						};
 					};
 					8CDA62911F82D4C2000C024B = {
 						CreatedOnToolsVersion = 9.0;
@@ -330,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CDA62BD1F82DBF4000C024B /* AvailableDoorsViewController+TableView.swift in Sources */,
+				8C31411B1F83C0DA00C3B0ED /* AvailableDoorsViewController+BlueTooth.swift in Sources */,
 				8CDA62BB1F82D8E9000C024B /* AvailableDoorsViewController.swift in Sources */,
 				8CDA62B21F82D5AB000C024B /* LoginViewController.swift in Sources */,
 				8CDA62821F82D4C2000C024B /* AppDelegate.swift in Sources */,
@@ -498,6 +509,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ParabitBeaconDemo/ParabitBeaconDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Y7NBCKHJP;
 				INFOPLIST_FILE = ParabitBeaconDemo/Info.plist;
@@ -514,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ParabitBeaconDemo/ParabitBeaconDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Y7NBCKHJP;
 				INFOPLIST_FILE = ParabitBeaconDemo/Info.plist;
