@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8CDA62821F82D4C2000C024B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA62811F82D4C2000C024B /* AppDelegate.swift */; };
-		8CDA62841F82D4C2000C024B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA62831F82D4C2000C024B /* ViewController.swift */; };
 		8CDA62871F82D4C2000C024B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA62851F82D4C2000C024B /* Main.storyboard */; };
 		8CDA62891F82D4C2000C024B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA62881F82D4C2000C024B /* Assets.xcassets */; };
 		8CDA628C1F82D4C2000C024B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA628A1F82D4C2000C024B /* LaunchScreen.storyboard */; };
 		8CDA62971F82D4C2000C024B /* ParabitBeaconDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA62961F82D4C2000C024B /* ParabitBeaconDemoTests.swift */; };
 		8CDA62A21F82D4C2000C024B /* ParabitBeaconDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA62A11F82D4C2000C024B /* ParabitBeaconDemoUITests.swift */; };
+		8CDA62B21F82D5AB000C024B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA62B11F82D5AB000C024B /* LoginViewController.swift */; };
+		8CDA62BB1F82D8E9000C024B /* AvailableDoorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA62BA1F82D8E9000C024B /* AvailableDoorsViewController.swift */; };
+		8CDA62BD1F82DBF4000C024B /* AvailableDoorsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA62BC1F82DBF4000C024B /* AvailableDoorsViewController+TableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,6 @@
 /* Begin PBXFileReference section */
 		8CDA627E1F82D4C2000C024B /* ParabitBeaconDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParabitBeaconDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDA62811F82D4C2000C024B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8CDA62831F82D4C2000C024B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8CDA62861F82D4C2000C024B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CDA62881F82D4C2000C024B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CDA628B1F82D4C2000C024B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,9 @@
 		8CDA629D1F82D4C2000C024B /* ParabitBeaconDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParabitBeaconDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDA62A11F82D4C2000C024B /* ParabitBeaconDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParabitBeaconDemoUITests.swift; sourceTree = "<group>"; };
 		8CDA62A31F82D4C2000C024B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CDA62B11F82D5AB000C024B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8CDA62BA1F82D8E9000C024B /* AvailableDoorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableDoorsViewController.swift; sourceTree = "<group>"; };
+		8CDA62BC1F82DBF4000C024B /* AvailableDoorsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AvailableDoorsViewController+TableView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +101,9 @@
 		8CDA62801F82D4C2000C024B /* ParabitBeaconDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8CDA62B01F82D592000C024B /* Models */,
+				8CDA62AF1F82D58A000C024B /* Views */,
 				8CDA62811F82D4C2000C024B /* AppDelegate.swift */,
-				8CDA62831F82D4C2000C024B /* ViewController.swift */,
 				8CDA62851F82D4C2000C024B /* Main.storyboard */,
 				8CDA62881F82D4C2000C024B /* Assets.xcassets */,
 				8CDA628A1F82D4C2000C024B /* LaunchScreen.storyboard */,
@@ -123,6 +128,71 @@
 				8CDA62A31F82D4C2000C024B /* Info.plist */,
 			);
 			path = ParabitBeaconDemoUITests;
+			sourceTree = "<group>";
+		};
+		8CDA62AF1F82D58A000C024B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA62B31F82D819000C024B /* Login */,
+				8CDA62B41F82D81D000C024B /* AvailableDoors */,
+				8CDA62B51F82D82A000C024B /* FindATM */,
+				8CDA62B61F82D833000C024B /* Emergency */,
+				8CDA62B71F82D83B000C024B /* Settings */,
+				8CDA62B81F82D840000C024B /* Info */,
+				8CDA62B11F82D5AB000C024B /* LoginViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8CDA62B01F82D592000C024B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8CDA62B31F82D819000C024B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		8CDA62B41F82D81D000C024B /* AvailableDoors */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA62BA1F82D8E9000C024B /* AvailableDoorsViewController.swift */,
+				8CDA62BC1F82DBF4000C024B /* AvailableDoorsViewController+TableView.swift */,
+			);
+			path = AvailableDoors;
+			sourceTree = "<group>";
+		};
+		8CDA62B51F82D82A000C024B /* FindATM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FindATM;
+			sourceTree = "<group>";
+		};
+		8CDA62B61F82D833000C024B /* Emergency */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Emergency;
+			sourceTree = "<group>";
+		};
+		8CDA62B71F82D83B000C024B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		8CDA62B81F82D840000C024B /* Info */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +329,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CDA62841F82D4C2000C024B /* ViewController.swift in Sources */,
+				8CDA62BD1F82DBF4000C024B /* AvailableDoorsViewController+TableView.swift in Sources */,
+				8CDA62BB1F82D8E9000C024B /* AvailableDoorsViewController.swift in Sources */,
+				8CDA62B21F82D5AB000C024B /* LoginViewController.swift in Sources */,
 				8CDA62821F82D4C2000C024B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +501,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Y7NBCKHJP;
 				INFOPLIST_FILE = ParabitBeaconDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Parabit.ParabitBeaconDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,6 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Y7NBCKHJP;
 				INFOPLIST_FILE = ParabitBeaconDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Parabit.ParabitBeaconDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
