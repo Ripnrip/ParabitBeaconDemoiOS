@@ -59,15 +59,13 @@ extension AvailableDoorsViewController: CBCentralManagerDelegate, CBPeripheralDe
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             print("NEXT PERIPHERAL NAME: \(peripheralName)")
             print("NEXT PERIPHERAL UUID: \(peripheral.identifier.uuidString)")
-            
+            print("NEXT PERIPHERAL STATE: \(peripheral.state.rawValue)")
             if peripheralName == AvailableDoorsViewController.sensorTagName {
                 print("SENSOR TAG FOUND! ADDING NOW!!!")
                 // to save power, stop scanning for other devices
                 keepScanning = false
                 pauseScan()
-                //disconnectButton.enabled = true
 
-                
                 // save a reference to the sensor tag
                 sensorTag = peripheral
                 sensorTag.delegate = self
@@ -138,7 +136,8 @@ extension AvailableDoorsViewController: CBCentralManagerDelegate, CBPeripheralDe
         if error != nil {
             print("there was an error discovering the services after connecting \(String(describing: error))")
         }
-        print("the discovered services are \(String(describing: peripheral.services))")
+        print("The discovered services are \(String(describing: peripheral.services))")
+        print("The discovered characteristics are \(peripheral.services!.description)")
 
     }
     /*
@@ -152,17 +151,14 @@ extension AvailableDoorsViewController: CBCentralManagerDelegate, CBPeripheralDe
      */
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("**** DISCONNECTED FROM SENSOR TAG!!!")
-//        lastTemperature = 0
-//        updateBackgroundImageForTemperature(lastTemperature)
-//        circleView.hidden = true
-//        temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
-//        temperatureLabel.text = "Tap to search"
-//        humidityLabel.text = ""
-//        humidityLabel.hidden = true
+
         if error != nil {
             print("****** DISCONNECTION DETAILS: \(error!.localizedDescription)")
         }
         sensorTag = nil
+        availableDoors = availableDoors.filter {$0.sensorTag != sensorTag}
+        doorsTableView.reloadData()
+
     }
     
     
@@ -175,20 +171,18 @@ extension AvailableDoorsViewController: CBCentralManagerDelegate, CBPeripheralDe
         print("*** PAUSING SCAN...")
         _ = Timer(timeInterval: timerPauseInterval, target: self, selector: #selector(resumeScan), userInfo: nil, repeats: false)
         centralManager.stopScan()
-        //disconnectButton.enabled = true
+        //allow user to disconnect with some UI
     }
     
     @objc func resumeScan() {
         if keepScanning {
             // Start scanning again...
             print("*** RESUMING SCAN!")
-//            disconnectButton.enabled = false
-//            temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
-//            temperatureLabel.text = "Searching"
+
             _ = Timer(timeInterval: timerScanInterval, target: self, selector: #selector(pauseScan), userInfo: nil, repeats: false)
             centralManager.scanForPeripherals(withServices: nil, options: nil)
         } else {
-           //disconnectButton.enabled = true
+           //allow user to disconnect with some UI
         }
     }
     
