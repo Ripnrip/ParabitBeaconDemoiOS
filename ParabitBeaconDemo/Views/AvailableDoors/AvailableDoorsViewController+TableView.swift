@@ -16,7 +16,7 @@ extension AvailableDoorsViewController : UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return availableDoors.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -26,6 +26,12 @@ extension AvailableDoorsViewController : UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 128
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sensor = availableDoors[indexPath.row].sensorTag
+        centralManager.connect(sensor, options: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

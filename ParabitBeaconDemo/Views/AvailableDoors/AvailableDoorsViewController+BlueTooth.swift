@@ -54,7 +54,7 @@ extension AvailableDoorsViewController: CBCentralManagerDelegate, CBPeripheralDe
 
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("centralManager didDiscoverPeripheral - CBAdvertisementDataLocalNameKey is \"\(CBAdvertisementDataLocalNameKey)\"")
+        print("centralManager didDiscoverPeripheral - CBAdvertisementDataLocalNameKey is \"\(CBAdvertisementDataLocalNameKey) and UUID is \(peripheral.identifier.uuidString)\"")
         // Retrieve the peripheral name from the advertisement data using the "kCBAdvDataLocalName" key
         if let peripheralName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             print("NEXT PERIPHERAL NAME: \(peripheralName)")
@@ -66,14 +66,18 @@ extension AvailableDoorsViewController: CBCentralManagerDelegate, CBPeripheralDe
                 keepScanning = false
                 pauseScan()
                 //disconnectButton.enabled = true
+
                 
                 // save a reference to the sensor tag
                 sensorTag = peripheral
                 sensorTag.delegate = self
                 
-                // Request a connection to the peripheral
-                centralManager.connect(sensorTag, options: nil)
-                //centralManager.connect(peripheral, options: nil)
+                //add peripheral to available doors tableview
+                let paraDoor = Peripheral(name: peripheralName, UUID: peripheral.identifier.uuidString, isConnectable: true, sensorTag: sensorTag)
+                availableDoors.append(paraDoor)
+                doorsTableView.reloadData()
+                
+
             }
         }
         
@@ -103,8 +107,9 @@ extension AvailableDoorsViewController: CBCentralManagerDelegate, CBPeripheralDe
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("**** SUCCESSFULLY CONNECTED TO SENSOR TAG!!!")
 
-        //temperatureLabel.font = UIFont(name: temperatureLabelFontName, size: temperatureLabelFontSizeMessage)
-        //temperatureLabel.text = "Connected"
+        let alert = UIAlertController(title: "Alert", message: "Successfully connected to the device", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
 
         // Now that we've successfully connected to the SensorTag, let's discover the services.
         // - NOTE:  we pass nil here to request ALL services be discovered.
@@ -126,7 +131,16 @@ extension AvailableDoorsViewController: CBCentralManagerDelegate, CBPeripheralDe
         print("**** CONNECTION TO SENSOR TAG FAILED!!!")
     }
     
-    
+    /*
+     Invoked after connecting to a peripheral; didDiscoverServices lists the services
+    */
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        if error != nil {
+            print("there was an error discovering the services after connecting \(String(describing: error))")
+        }
+        print("the discovered services are \(String(describing: peripheral.services))")
+
+    }
     /*
      Invoked when an existing connection with a peripheral is torn down.
      

@@ -18,8 +18,13 @@ class AvailableDoorsViewController: UIViewController {
     // define our scanning interval times
     let timerPauseInterval:TimeInterval = 10.0
     let timerScanInterval:TimeInterval = 2.0
+
+    var availableDoors = [Peripheral]()
     
     static let sensorTagName = "Parabeacon"
+    static let preUUID = "C9D53F67-F276-B37C-FAAF-040558BDEC4B"
+    static let postUUID = "A3C87500-8ED3-4BDF-8A39-A01BEBEDE295"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.doorsTableView.separatorColor = UIColor.clear
